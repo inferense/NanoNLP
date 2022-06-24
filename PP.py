@@ -1,5 +1,6 @@
 import re
 import string
+from Tokenizers import RegexTokenizer
 
 
 class Preprocess:
@@ -38,7 +39,9 @@ class Preprocess:
         return self.data
 
     def make_tokens(self):
-        pass
+        tokenizer = RegexTokenizer(r'\w+')
+        self.data = tokenizer.tokenize(self.data)
+        return self.data
 
     def make_tfidf(self):
         # TODO tfidf
